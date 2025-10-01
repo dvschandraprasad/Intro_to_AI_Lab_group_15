@@ -385,7 +385,7 @@ print("\n--- Evaluating Best Models with Cross-Validation (Random + Grid) ---")
 for name, model in best_models_all.items():
     # Perform 10-fold cross-validation
     scores = cross_val_score(model, housing_prepared, housing_labels,
-                             scoring='neg_mean_squared_error', cv=5, n_jobs=-1)
+                             scoring='neg_mean_squared_error', cv=10, n_jobs=-1)
     rmse_scores = np.sqrt(-scores)
     model_cv_scores[name] = rmse_scores
     print(f"\n Results for {name}")
@@ -452,3 +452,4 @@ final_rmse = np.sqrt(final_mse)
 print(f"\n--- Final Model Evaluation on Test Set ---")
 print(f"Best Performing Model: Random Forest Regressor")
 print(f"Final RMSE on Test Set: {final_rmse}")
+
